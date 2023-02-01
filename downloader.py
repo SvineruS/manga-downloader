@@ -24,7 +24,6 @@ class MangaDownloader:
             raise e
 
         self.chapters = self._parse_chapters()
-
     def _get_manga_data(self, manga_url):
         page = requests.get(manga_url)
         html = page.text
@@ -41,7 +40,7 @@ class MangaDownloader:
                 "number": chapter['chapter_number'],
                 "url": f"{base_url}/v{chapter['chapter_volume']}/c{chapter['chapter_number']}",
             }
-            for chapter in reversed(self.data['chapters'])
+            for chapter in reversed(self.data['chapters']["list"])
         ]
 
     def get_chapter_pages(self, chapter_url):
